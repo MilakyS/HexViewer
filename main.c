@@ -41,7 +41,7 @@ void set_colors(const int argc, char *argv[]) {
     color.RED = "\033[31m";
     color.BOLD = "\033[1m";
     //TODO add support for flags in any position
-    if (argc == 3 && strcmp(argv[1], "-wcol") == 0 || !isatty(STDOUT_FILENO)) {
+    if ((argc == 3 && strcmp(argv[1], "-wcol") == 0) || !isatty(STDOUT_FILENO)) {
         color.RESET = color.GREEN = color.RED = color.BOLD = "";
     }
 }
@@ -76,7 +76,7 @@ int main(const int argc, char *argv[]) {
         }
 
         printf(" | ");
-        //FIXME
+        // FIXME
         for (int i = 0; i < (int) counter; i++) {
             if (buffer[i] >= 32 && buffer[i] <= 126) {
                 printf("%c", buffer[i]);
